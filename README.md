@@ -105,14 +105,32 @@ const rootReducer = combineReducers({
 
 1. Creating store using **`configureStore`**
    1. A friendly abstraction over the standard Redux `createStore` function that adds good defaults to the store setup for a better development experience.
-2. This created store object can have multiple functions passed in the configureStore. For a reducer function passed inside it :
+2. This created store object can have multiple functions passed in the `configureStore`. For a reducer function passed inside it :
    1. If a single function is passes then it'll be directly used as the root reducer for the store
    2. If there are multiple slices like {users: usersReducer, posts: postsReducer}, then it'll work as the combineReducers() to create the root reducer by passing this object to the Redux combineReducers utility.
 
 ```
-const store = configureStore({
+const store = `configureStore`({
   reducer: {
     users: userSlice.reducer
   },
 });
 ```
+
+### V5 - Connect store to react
+
+- Summary :
+
+1. **Create a Redux store** with `configureStore` in the `src\store\index.jsx`
+   1. `configureStore` accepts a reducer function as a named argument
+   2. `configureStore` automatically sets up the store with good default settings
+2. **Provide the Redux store to the React application components**
+   1. Put a React-Redux `<Provider>` component around your `<App />` in the `main.jsx`
+   2. Pass the Redux store which was created in the `src\store\index.jsx` as `<Provider store={store}>`
+3. Create a Redux "slice" reducer with `createSlice`
+   1. Call `createSlice` with a string name, an initial state, and named reducer function
+   2. Reducer functions may "mutate" the state using Immer
+   3. Export the generated slice reducer and action creators
+4. Use the React-Redux `useSelector/useDispatch` hooks in React components
+   1. Read data from the store with the `useSelector` hook
+   2. Get the dispatch function with the `useDispatch` hook, and dispatch actions as needed
