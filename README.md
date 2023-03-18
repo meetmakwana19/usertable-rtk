@@ -65,3 +65,36 @@ npm i react-icons
 
 9. Added Navbar, UserDetails and DeleteAllUser components to the App
 10. Changed CSS in the index.css and imported styled-components lib in the UserDetails.jsx
+
+---
+
+### V3 - Create slice in RTK
+
+1. Can understand slice as a part of the reduxx store
+   1. Like a slice of a mango will be a small part of mango but all slices joint together will form a complete mango
+   2. Means small parts of a global centralised store are known as slices
+2. Similar type of jobs can be done by binding them inside a slide but different types of works which are not related to each other those are made in each different slice.
+3. For example, 3 functions of Creating, deleting and deleting all users is related to the usersDetails only so will create a single slice of `userDetails`.
+   1. So will add those 3 functionalities inside the slice as reducers.
+   2. 3 actions inside a single slice are accessing the redux store.
+4. Slices can also be defined as part of redux state.
+5. Redux state is typically organized into "slices", defined by the reducers that are passed to combineReducers
+
+```
+import { combineReducers } from 'redux'
+import usersReducer from './usersReducer'
+import postsReducer from './postsReducer'
+
+const rootReducer = combineReducers({
+  users: usersReducer,
+  posts: postsReducer,
+})
+```
+
+[Docs Ref.](https://redux-toolkit.js.org/usage/usage-guide#creating-slices-of-state)
+
+6. In this example, both `users` and `posts` would be considered "slices". Both of the reducers:
+   1. "Own" a piece of state, including what the initial value is
+   2. Define how that state is updated
+   3. Define which specific actions result in state updates
+7. Made `src\store\slices\UserSlice.jsx`
