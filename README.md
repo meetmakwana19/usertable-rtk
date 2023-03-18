@@ -98,3 +98,21 @@ const rootReducer = combineReducers({
    2. Define how that state is updated
    3. Define which specific actions result in state updates
 7. Made `src\store\slices\UserSlice.jsx`
+
+---
+
+### V4 - Create store
+
+1. Creating store using **`configureStore`**
+   1. A friendly abstraction over the standard Redux `createStore` function that adds good defaults to the store setup for a better development experience.
+2. This created store object can have multiple functions passed in the configureStore. For a reducer function passed inside it :
+   1. If a single function is passes then it'll be directly used as the root reducer for the store
+   2. If there are multiple slices like {users: usersReducer, posts: postsReducer}, then it'll work as the combineReducers() to create the root reducer by passing this object to the Redux combineReducers utility.
+
+```
+const store = configureStore({
+  reducer: {
+    users: userSlice.reducer
+  },
+});
+```

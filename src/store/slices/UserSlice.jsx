@@ -11,4 +11,9 @@ const userSlice = createSlice({
   },
 });
 
-export { userSlice };
+// .actions gives us actionCreators
+console.log(userSlice.actions);
+console.log(userSlice);
+
+// export { userSlice };
+export default userSlice.reducers; //if need to write just { users : userSlice } instead of { users : userSlice.reducers } in the configureStore functioon of the index.jsx
