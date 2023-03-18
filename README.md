@@ -157,3 +157,13 @@ npm i chance
   - Import `useDispatch()` hook from react-redux to trigger action method
   - Action creators
 - RTK by default uses `Immer` which simplifies the process of writing immutable update logic and there's no tension of data getting mutated upon the update actions
+
+---
+
+### V7 - Access and display user data using `useSelector()`
+
+1. Made DisplayUsers component
+2. Need to use useSelector() hook to access data
+   1. The (state) represents complete store data of the store including `reducer{ users: { } }` thats y accessing it like `state.users`
+   2. Whereas the `(state)` or `state.push` in the createSlice function means the state of that slice only and not comlete store data
+3. Map the store state in the frontend
