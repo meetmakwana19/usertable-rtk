@@ -134,3 +134,26 @@ const store = `configureStore`({
 4. Use the React-Redux `useSelector/useDispatch` hooks in React components
    1. Read data from the store with the `useSelector` hook
    2. Get the dispatch function with the `useDispatch` hook, and dispatch actions as needed
+
+---
+
+### V6 - Call and Update state data
+
+1. Added an onclick function on the Add new users btn
+2. Installed npm Chance - Random generator helper for JavaScript
+
+```
+npm i chance
+```
+
+3. Created a file for fetching data from the chance api in `src\chance_api\index.js`
+4. Wrote code to addUssers in the UserSlice.jsx and sent data to it from the add btn from UserDetails
+5. Exported addUser mini reducer from the UserSlice and imported it into the UserDetails component
+6. So in short on btn click on the frontend component of UserDetails, `dispatch()` sends that payload to the userSlice which checks the payload type and sends it to approriate mini reducer which processes the payload
+
+---
+
+- If there's any data on the frontend which needs to be updated in the store so to **update the state data** 2 imp steps are :
+  - Import `useDispatch()` hook from react-redux to trigger action method
+  - Action creators
+- RTK by default uses `Immer` which simplifies the process of writing immutable update logic and there's no tension of data getting mutated upon the update actions

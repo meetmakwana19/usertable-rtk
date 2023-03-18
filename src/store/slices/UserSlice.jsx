@@ -5,7 +5,14 @@ const userSlice = createSlice({
   initialState: [], //empty array for a series of users
   // big reducer which will have micro reducers
   reducers: {
-    addUser(state, action) {},
+    // micro-reducer functions
+
+    // when add btn will be clicked the data  from api will be set as state in the frontend
+    addUser(state, action) {
+      console.log("Payload recieved : ", action.payload);
+      // adding the input state payload into the state
+      state.push(action.payload);
+    },
     removeUser(state, action) {},
     deleteUsers(state, action) {},
   },
@@ -17,3 +24,4 @@ console.log(userSlice);
 
 export { userSlice };
 // export default userSlice.reducers; //if need to write just { users : userSlice } instead of { users : userSlice.reducers } in the configureStore functioon of the index.jsx
+export const { addUser } = userSlice.actions;

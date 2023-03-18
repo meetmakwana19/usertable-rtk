@@ -1,14 +1,29 @@
 import React from "react";
 import DeleteAllUser from "./DeleteAllUser";
 import styled from "styled-components";
+import { fakeUserData } from "../chance_api";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/slices/UserSlice";
 
 const UserDetails = () => {
+  const dispatch = useDispatch();
+
+  const addNewUser = (payload) => {
+    console.log("Payload sending : ", payload);
+    // sending the payload data to the UserSlice via dispatch
+    dispatch(addUser(payload));
+  };
   return (
     <Wrapper>
       <div className="content">
         <div className="admin-table">
           <div className="admin-subtitle">List of User Details</div>
-          <button className="btn add-btn">Add new users</button>
+          <button
+            className="btn add-btn"
+            onClick={() => addNewUser(fakeUserData())}
+          >
+            Add new users
+          </button>
         </div>
         <ul>
           <li>Hi</li>
