@@ -27,6 +27,8 @@ const userSlice = createSlice({
       // state.splice(userIndex, 1);
       state.splice(action.payload, 1);
     },
+
+    // writing this deleteUsers micro-reducer is essential as the extraReducer is using it
     deleteUsers(state, action) {
       console.log("deleteUsers micro reducers");
 
@@ -36,6 +38,12 @@ const userSlice = createSlice({
       // so returning the initialState as it was empty earlier
       return [];
     },
+  },
+  extraReducers(builder) {
+    // builder had addCase method which has it's 2nd arg as a callback function
+    builder.addCase(userSlice.actions.deleteUsers, () => {
+      return [];
+    });
   },
 });
 

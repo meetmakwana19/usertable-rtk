@@ -191,3 +191,18 @@ Means anything mutating/changing our state, it'll handle it properly
 
 1. Populated UI of the `DeleteAllUser.jsx` component
 2. returned `[]` initialState in the the `deleteUsers(state, action)` micro-reducer of the userSlice.
+
+### V10 - `extraReducers()`
+
+- Typical flow of RTK :
+
+1. **`Action`** of `{type: "addUsers"}` is sent via dispatch()
+2. **`dispatch()`** takes the action type to the `configureStore` global store and check if any mentioned slices out of all the slices like userSlice or adminSlice has a addUsers type or not
+3. **`Main state`** if updated oncce the dispatch find there s a micro-reducer of type addUsers in the userSlice.
+
+So if there are micro-reducers of similar functionalities in different slices, we can use **`extraReducers()`** to avoid redundancy of writing code.
+
+- ie. If action is supposed to be handled by one reducer, use simply reducers
+- If action is supposed to be handled by multiple reducers, then use `extraReducers()`.
+- So `extraReducers()` makes that specific reducer think it has that other action from other reducer as it's own action type.
+- The micro-reducer mentioned in the extraReducer must be defined somewhere in some slice which can be a disadvantage.
