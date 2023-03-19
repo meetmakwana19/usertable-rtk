@@ -198,7 +198,8 @@ Means anything mutating/changing our state, it'll handle it properly
 
 1. **`Action`** of `{type: "addUsers"}` is sent via dispatch()
 2. **`dispatch()`** takes the action type to the `configureStore` global store and check if any mentioned slices out of all the slices like userSlice or adminSlice has a addUsers type or not
-3. **`Main state`** if updated oncce the dispatch find there s a micro-reducer of type addUsers in the userSlice.
+3. **`Main state`** if updated once the dispatch find there s a micro-reducer of type addUsers in the userSlice.
+   ![RTK Actions and reducers working (diagram) ](diagram.png)
 
 So if there are micro-reducers of similar functionalities in different slices, we can use **`extraReducers()`** to avoid redundancy of writing code.
 
