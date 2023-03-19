@@ -1,14 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { deleteUsers } from "../store/slices/UserSlice";
+// import { deleteUsers } from "../store/slices/UserSlice";
+import { clearAllUsersImport } from "../store/actions";
 
 const DeleteAllUser = () => {
   const dispatch = useDispatch();
 
   const deletingUsers = () => {
     console.log("delete all users");
-    dispatch(deleteUsers());
+    // dispatch(deleteUsers());
+    dispatch(clearAllUsersImport());
   };
   return (
     <Wrapper>

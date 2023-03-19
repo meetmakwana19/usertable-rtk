@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { clearAllUsersImport } from "../actions";
 
 const userSlice = createSlice({
   name: "user",
@@ -41,7 +42,10 @@ const userSlice = createSlice({
   },
   extraReducers(builder) {
     // builder had addCase method which has it's 2nd arg as a callback function
-    builder.addCase(userSlice.actions.deleteUsers, () => {
+
+    // clearAllUsersImport is createAction's method to use action type : deleteUsersType so no need to depend on  userSlice
+    builder.addCase(clearAllUsersImport, () => {
+      // builder.addCase(userSlice.actions.deleteUsers, () => {
       return [];
     });
   },

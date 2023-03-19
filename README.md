@@ -207,3 +207,24 @@ So if there are micro-reducers of similar functionalities in different slices, w
 - If action is supposed to be handled by multiple reducers, then use `extraReducers()`.
 - So `extraReducers()` makes that specific reducer think it has that other action from other reducer as it's own action type.
 - The micro-reducer mentioned in the extraReducer must be defined somewhere in some slice which can be a disadvantage.
+
+1. Added extraReducers() in the UserSlice
+
+---
+
+### V11 - createAction function
+
+1. `createAction` will overcome the disadvantage of the micro-reducer mentioned in the extraReducer must be defined somewhere in some slice.
+2. It's helper function for defining a Redux **_action type_** and creator **_without depending on any slice_**
+
+```
+function createAction(type, prepareAction?)
+```
+
+3. [ref](https://redux-toolkit.js.org/api/createAction)
+4. Created new folder actions in the store\
+5. Created `clearAllUsersImport` in the `store/actions/index.js` and used that as 1st arg in the `builder.case()` of the extraReducers in the userSlice.
+   1. And hence on depending on the userSlice
+   2. `clearAllUsersImport` is createAction's method to use action type : `deleteUsersType`
+6. So now no need to access some slice like userSlice but just import the `clearAllUsersImport` and use it to dispatch the action type `deleteUsersType`
+7. Whenever need to use this functionality, just use clearAllUsersImport as the 1st arg in the `builder.case()` of the extraReducers
