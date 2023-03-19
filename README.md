@@ -167,3 +167,22 @@ npm i chance
    1. The (state) represents complete store data of the store including `reducer{ users: { } }` thats y accessing it like `state.users`
    2. Whereas the `(state)` or `state.push` in the createSlice function means the state of that slice only and not comlete store data
 3. Map the store state in the frontend
+
+---
+
+### V8 - Delete a single user from state
+
+1. Added delete button in `DisplayUsers` component and used `MdDeleteForever` from react-icons.
+2. So our motive is to delete the specific user upon `onClick` on the button and then `dispatch` an action from the `DisplayUsers` component. Then to check the action in the `userSlice` for `removeUser`(state, action)
+3. Can easily call/access the any micro-reducer of a slice using `dispatch`
+
+IMP NOTE :
+
+```
+RTK gives us Immer under the hood.
+
+Means anything mutating/changing our state, it'll handle it properly
+```
+
+4. Using `splice()` to delete user from the array of users means using javascript's splice to delete `id` indexed user element
+5. Can use `(user)` too instead of `(id)` and pass use to the micro-reducer but will need to add one more extra line to get id from user like `let userIndex = state.indexOf(action.payload)`

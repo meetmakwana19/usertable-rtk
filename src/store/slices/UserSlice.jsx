@@ -13,7 +13,20 @@ const userSlice = createSlice({
       // adding the input state payload into the state
       state.push(action.payload);
     },
-    removeUser(state, action) {},
+    removeUser(state, action) {
+      console.log(
+        "removeUser() micro-reducer called ! currrent user id -> ",
+        action.payload
+      );
+      // deleting user
+      // state.pop(action.payload); //this will work like a stack fo this is not needed
+
+      // let userIndex = state.indexOf(action.payload)
+
+      // using javascript's splice to delete id indexed element
+      // state.splice(userIndex, 1);
+      state.splice(action.payload, 1);
+    },
     deleteUsers(state, action) {},
   },
 });
@@ -25,3 +38,4 @@ console.log(userSlice);
 export { userSlice };
 // export default userSlice.reducers; //if need to write just { users : userSlice } instead of { users : userSlice.reducers } in the configureStore functioon of the index.jsx
 export const { addUser } = userSlice.actions;
+export const { removeUser } = userSlice.actions;
