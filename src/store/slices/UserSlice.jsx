@@ -27,7 +27,15 @@ const userSlice = createSlice({
       // state.splice(userIndex, 1);
       state.splice(action.payload, 1);
     },
-    deleteUsers(state, action) {},
+    deleteUsers(state, action) {
+      console.log("deleteUsers micro reducers");
+
+      //assigning a new empty array to the state which is wrong
+      // return (state = []);
+
+      // so returning the initialState as it was empty earlier
+      return [];
+    },
   },
 });
 
@@ -37,5 +45,4 @@ console.log(userSlice);
 
 export { userSlice };
 // export default userSlice.reducers; //if need to write just { users : userSlice } instead of { users : userSlice.reducers } in the configureStore functioon of the index.jsx
-export const { addUser } = userSlice.actions;
-export const { removeUser } = userSlice.actions;
+export const { addUser, removeUser, deleteUsers } = userSlice.actions;

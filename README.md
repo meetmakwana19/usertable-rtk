@@ -186,3 +186,8 @@ Means anything mutating/changing our state, it'll handle it properly
 
 4. Using `splice()` to delete user from the array of users means using javascript's splice to delete `id` indexed user element
 5. Can use `(user)` too instead of `(id)` and pass use to the micro-reducer but will need to add one more extra line to get id from user like `let userIndex = state.indexOf(action.payload)`
+
+### V9 - Delete all users using empty array
+
+1. Populated UI of the `DeleteAllUser.jsx` component
+2. returned `[]` initialState in the the `deleteUsers(state, action)` micro-reducer of the userSlice.
